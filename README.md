@@ -77,7 +77,7 @@ Before starting, make sure you have [Node.js](https://nodejs.org/) installed on 
 ###.eslintrc.js
 <details>
   <summary>Click to show/hide file contents</summary>
-```javascript
+```json
 module.exports =  {
   parser:  '@typescript-eslint/parser',
   extends:  [
@@ -96,6 +96,7 @@ module.exports =  {
 ###tsconfig.json
 <details>
   <summary>Click to show/hide file contents</summary>
+```json
 {
   "compilerOptions": {
     "outDir": "./dist/",
@@ -107,11 +108,13 @@ module.exports =  {
     "moduleResolution": "node"
   }
 }
+```
 </details>
 
 ###webpack.config.js
 <details>
   <summary>Click to show/hide file contents</summary>
+```json
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -186,6 +189,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist")
   }
 };
+```
 </details>
 </details>
 
