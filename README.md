@@ -77,7 +77,8 @@ Before starting, make sure you have [Node.js](https://nodejs.org/) installed on 
 ###.eslintrc.js
 <details>
   <summary>Click to show/hide file contents</summary>
-```json
+
+```
 module.exports =  {
   parser:  '@typescript-eslint/parser',
   extends:  [
@@ -91,11 +92,13 @@ module.exports =  {
   },
 };
 ```
+
 </details>
 
 ###tsconfig.json
 <details>
   <summary>Click to show/hide file contents</summary>
+
 ```
 {
   "compilerOptions": {
@@ -114,6 +117,7 @@ module.exports =  {
 ###webpack.config.js
 <details>
   <summary>Click to show/hide file contents</summary>
+
 ```
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -190,7 +194,9 @@ module.exports = {
   }
 };
 ```
+
 </details>
+
 </details>
 
 ###tasks
