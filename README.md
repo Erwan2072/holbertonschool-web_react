@@ -181,7 +181,10 @@ module.exports = {
     path: path.resolve(__dirname, "dist")
   }
 };
-</details> </details> ```
+</details>
+
+<details>
+  <summary>Click here to see the tasks</summary>
 
 ### Task 0: Creating an interface for a student
 - Create an interface named `Student`.
