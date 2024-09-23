@@ -31,60 +31,164 @@ Before starting, make sure you have [Node.js](https://nodejs.org/) installed on 
    git clone <repository-url>
    cd <project-directory>
 
+<details>
+  <summary>Configuration Files</summary>
 
-Scripts
-The following scripts are available for use during development and production:
+### package.json
+<details>
+  <summary>Click to show/hide file contents</summary>
 
-Start Development Server:
-bash
+```json
+{
+  "name": "typescript_dependencies",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start-dev": "webpack-dev-server --open",
+    "build": "webpack",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/plugin-proposal-export-default-from": "^7.5.2",
+    "@babel/preset-typescript": "^7.7.2",
+    "@types/jest": "^24.0.23",
+    "@typescript-eslint/eslint-plugin": "^2.4.0",
+    "@typescript-eslint/parser": "^2.4.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "fork-ts-checker-webpack-plugin": "^1.5.1",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.9.0",
+    "source-map": "^0.7.3",
+    "ts-jest": "^24.1.0",
+    "ts-loader": "^6.2.0",
+    "typescript": "^3.6.4",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.2"
+  }
+}
+</details>
+.eslintrc.js
+<details> <summary>Click to show/hide file contents</summary>
+js
 Copier le code
-npm start
-This script runs the Webpack Dev Server with hot-reloading enabled, allowing you to see changes in real-time.
-
-Build for Production:
-bash
+module.exports =  {
+  parser:  '@typescript-eslint/parser',
+  extends:  [
+    'plugin:@typescript-eslint/recommended',  // Uses the recommended rules from @typescript-eslint/eslint-plugin
+  ],
+  parserOptions:  {
+    ecmaVersion:  2018,
+    sourceType:  'module',
+  },
+  rules:  {
+  },
+};
+</details>
+tsconfig.json
+<details> <summary>Click to show/hide file contents</summary>
+json
 Copier le code
-npm run build
-This creates a production build, optimized and ready to be deployed.
-
-Webpack Configuration
-The Webpack configuration is set up to handle TypeScript compilation, file cleaning, and HTML file generation. Key parts of the configuration include:
-
-Entry: Points to the main.ts file as the entry point of the application.
-Output: Bundles files into the dist folder as bundle.js.
-Plugins:
-HtmlWebpackPlugin for automatic HTML file generation.
-CleanWebpackPlugin for cleaning up the output folder.
-ForkTsCheckerWebpackPlugin for type checking without slowing down the build process.
-File Structure
-Here is an overview of the key files and folders in the project:
-
-graphql
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es5",
+    "allowJs": true,
+    "moduleResolution": "node"
+  }
+}
+</details>
+webpack.config.js
+<details> <summary>Click to show/hide file contents</summary>
+js
 Copier le code
-├── js/
-│   ├── main.ts        # Main TypeScript entry point
-├── dist/              # Output folder for the bundled code
-├── webpack.config.js  # Webpack configuration file
-├── tsconfig.json      # TypeScript configuration file
-├── package.json       # Project metadata and dependencies
-└── README.md          # This documentation file
-Development
-To start developing, run the following command to launch the development server:
+const path = require("path");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
-bash
-Copier le code
-npm start
-Webpack Dev Server will serve your app and reload the page whenever changes are made.
+module.exports = {
+  entry: "./js/main.ts",
+  devtool: "inline-source-map",
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        options: {
+          transpileOnly: true
+        }
+      }
+    ]
+  },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"]
+  },
+  devServer: {
+    contentBase: "./dist"
+  },
+  plugins: [
+    new ForkTsCheckerWebpackPlugin(),
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: "Development"
+    })
+  ],
+  output: {
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist")
+  }
+};
+</details> </details> ```
 
-Build
-For a production-ready build, use:
+<details>
+  <summary>Click here to see the tasks</summary>
 
-bash
-Copier le code
-npm run build
-This will generate an optimized version of the application in the dist folder.
+### Task 0: Creating an interface for a student
+- Create an interface named `Student`.
+- Define properties: `firstName`, `lastName`, `age`, and `location`.
+- Store two student objects in an array `studentsList`.
+- Render a table using Vanilla JavaScript.
 
-Plugins Overview
-HtmlWebpackPlugin: This plugin generates an HTML file that automatically includes the output JavaScript file.
-CleanWebpackPlugin: Clears out the dist folder before every build to ensure that no old or unnecessary files remain.
-ForkTsCheckerWebpackPlugin: Allows type checking for TypeScript in a separate process, which speeds up the build process.
+### Task 1: Let's build a Teacher interface
+- Create an interface `Teacher` with required and optional fields.
+- Allow dynamic addition of properties to the interface.
+
+### Task 2: Extending the Teacher class
+- Extend the `Teacher` interface to create a `Directors` interface.
+- Add the `numberOfReports` attribute to `Directors`.
+
+### Task 3: Printing teachers
+- Create a function `printTeacher` that returns a formatted string from the first and last names.
+
+### Task 4: Writing a class
+- Create a class `StudentClass` with methods for homework and name display.
+
+### Task 5: Advanced types Part 1
+- Create interfaces `DirectorInterface` and `TeacherInterface`.
+- Implement the interfaces in respective classes and provide methods for work tasks.
+
+### Task 6: Creating functions specific to employees
+- Write functions `isDirector` and `executeWork` for conditional method execution.
+
+### Task 7: String literal types
+- Create a string literal type `Subjects` and a function `teachClass` to handle subject-specific logic.
+
+### Task 8: Ambient Namespaces
+- Create an ambient namespace to manage `RowID` and `RowElement` types.
+- Implement `CRUD` operations using ambient declarations.
+
+### Task 9: Namespace & Declaration merging
+- Use declaration merging to extend a namespace with new class attributes and methods for different subjects (e.g., `Cpp`, `React`, `Java`).
+
+### Task 10: Brand convention & Nominal typing
+- Define two interfaces `MajorCredits` and `MinorCredits` and their summing functions with unique branding.
+
+</details>
