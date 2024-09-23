@@ -71,12 +71,13 @@ Before starting, make sure you have [Node.js](https://nodejs.org/) installed on 
     "webpack-dev-server": "^3.8.2"
   }
 }
+```
 </details>
 
 ###.eslintrc.js
 <details>
   <summary>Click to show/hide file contents</summary>
-
+```javascript
 module.exports =  {
   parser:  '@typescript-eslint/parser',
   extends:  [
@@ -89,6 +90,7 @@ module.exports =  {
   rules:  {
   },
 };
+```
 </details>
 
 ###tsconfig.json
