@@ -244,3 +244,5 @@ module.exports = {
 - Define two interfaces `MajorCredits` and `MinorCredits` and their summing functions with unique branding.
 
 </details>
+
+Erwan
