@@ -38,7 +38,7 @@ Before starting, make sure you have [Node.js](https://nodejs.org/) installed on 
 <details>
   <summary>Click to show/hide file contents</summary>
 
-```json
+```
 {
   "name": "typescript_dependencies",
   "version": "1.0.0",
@@ -96,7 +96,7 @@ module.exports =  {
 ###tsconfig.json
 <details>
   <summary>Click to show/hide file contents</summary>
-```json
+```
 {
   "compilerOptions": {
     "outDir": "./dist/",
@@ -114,7 +114,7 @@ module.exports =  {
 ###webpack.config.js
 <details>
   <summary>Click to show/hide file contents</summary>
-```json
+```
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
