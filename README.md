@@ -72,10 +72,10 @@ Before starting, make sure you have [Node.js](https://nodejs.org/) installed on 
   }
 }
 </details>
+
 .eslintrc.js
 <details> <summary>Click to show/hide file contents</summary>
-js
-Copier le code
+
 module.exports =  {
   parser:  '@typescript-eslint/parser',
   extends:  [
@@ -89,10 +89,9 @@ module.exports =  {
   },
 };
 </details>
+
 tsconfig.json
 <details> <summary>Click to show/hide file contents</summary>
-json
-Copier le code
 {
   "compilerOptions": {
     "outDir": "./dist/",
@@ -105,10 +104,46 @@ Copier le code
   }
 }
 </details>
+
 webpack.config.js
 <details> <summary>Click to show/hide file contents</summary>
-js
-Copier le code
+const path = require("path");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
+module.exports = {
+  entry: "./js/main.ts",
+  devtool: "inline-source-map",
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        options: {
+          transpileOnly: true
+        }
+      }
+    ]
+  },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"]
+  },
+  devServer: {
+    contentBase: "./dist"
+  },
+  plugins: [
+    new ForkTsCheckerWebpackPlugin(),
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: "Development"
+    })
+  ],
+  output: {
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist")
+  }
+};
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -147,9 +182,6 @@ module.exports = {
   }
 };
 </details> </details> ```
-
-<details>
-  <summary>Click here to see the tasks</summary>
 
 ### Task 0: Creating an interface for a student
 - Create an interface named `Student`.
