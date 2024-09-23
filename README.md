@@ -74,7 +74,7 @@ Before starting, make sure you have [Node.js](https://nodejs.org/) installed on 
 ```
 </details>
 
-###.eslintrc.js
+### .eslintrc.js
 <details>
   <summary>Click to show/hide file contents</summary>
 
@@ -95,7 +95,7 @@ module.exports =  {
 
 </details>
 
-###tsconfig.json
+### tsconfig.json
 <details>
   <summary>Click to show/hide file contents</summary>
 
@@ -114,7 +114,7 @@ module.exports =  {
 ```
 </details>
 
-###webpack.config.js
+### webpack.config.js
 <details>
   <summary>Click to show/hide file contents</summary>
 
@@ -199,7 +199,7 @@ module.exports = {
 
 </details>
 
-###tasks
+### tasks
 <details>
   <summary>Click here to see the tasks</summary>
 
